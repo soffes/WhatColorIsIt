@@ -6,6 +6,7 @@
 //  Copyright © 2015 Sam Soffes. All rights reserved.
 //
 
+import AppKit
 import ScreenSaver
 
 public class View: ScreenSaverView {

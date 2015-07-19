@@ -13,6 +13,8 @@
 		21A6B8EA1B5C5F8C00D0213E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A6B8E91B5C5F8C00D0213E /* AppDelegate.swift */; };
 		21A6B8EC1B5C5FEA00D0213E /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A6B8EB1B5C5FEA00D0213E /* DemoViewController.swift */; };
 		21A6B8ED1B5C602A00D0213E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A6B8D41B5C5F2800D0213E /* View.swift */; };
+		21B0B0331B5C62F6006E9953 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B0B0321B5C62F6006E9953 /* ScreenSaver.framework */; };
+		21B0B0351B5C62FA006E9953 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B0B0341B5C62FA006E9953 /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		21A6B8E51B5C5F6C00D0213E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21A6B8E91B5C5F8C00D0213E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21A6B8EB1B5C5FEA00D0213E /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		21B0B0321B5C62F6006E9953 /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
+		21B0B0341B5C62FA006E9953 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21B0B0351B5C62FA006E9953 /* AppKit.framework in Frameworks */,
+				21B0B0331B5C62F6006E9953 /* ScreenSaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +56,7 @@
 			children = (
 				217058C61B5C5EE40035E3DF /* What Color Is It */,
 				21A6B8DB1B5C5F6B00D0213E /* Demo */,
+				21B0B0361B5C62FD006E9953 /* Frameworks */,
 				217058C51B5C5EE40035E3DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +89,15 @@
 				21A6B8E51B5C5F6C00D0213E /* Info.plist */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		21B0B0361B5C62FD006E9953 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21B0B0341B5C62FA006E9953 /* AppKit.framework */,
+				21B0B0321B5C62F6006E9953 /* ScreenSaver.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,11 +318,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "What Color Is It/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.What-Color-Is-It";
 				PRODUCT_MODULE_NAME = WhatColorIsIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -319,11 +337,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "What Color Is It/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samsoffes.What-Color-Is-It";
 				PRODUCT_MODULE_NAME = WhatColorIsIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -389,6 +409,7 @@
 				21A6B8E81B5C5F6C00D0213E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
