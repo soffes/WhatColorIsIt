@@ -13,9 +13,9 @@ class DemoViewController: NSViewController {
 
 	// MARK: - Properties
 
-	let screenSaver: ScreenSaverView = {
-		let view = View()
-		view.autoresizingMask = [.ViewWidthSizable, .ViewHeightSizable]
+	let screenSaver: ScreenSaverView! = {
+		let view = View(frame: CGRectZero, isPreview: false)
+		view?.autoresizingMask = .ViewWidthSizable | .ViewHeightSizable
 		return view
 	}()
 
@@ -29,6 +29,6 @@ class DemoViewController: NSViewController {
 
 		// Start animating the clock
 		screenSaver.startAnimation()
-		NSTimer.scheduledTimerWithTimeInterval(screenSaver.animationTimeInterval, target: screenSaver, selector: "animateOneFrame", userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(screenSaver.animationTimeInterval(), target: screenSaver, selector: "animateOneFrame", userInfo: nil, repeats: true)
 	}
 }

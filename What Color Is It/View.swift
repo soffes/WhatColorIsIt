@@ -15,15 +15,20 @@ public class View: ScreenSaverView {
 	// MARK: - Properties
 
 	/// The text font
-	private var font: NSFont!
+	private var font: NSFont?
 
 
 	// MARK: - NSView
 
 	// This is where the drawing happens. It gets called indirectly from `animateOneFrame`.
 	public override func drawRect(rect: NSRect) {
+        // Make sure we have a font
+        if font == nil {
+            updateFont()
+        }
+
 		// Get the current time as a color
-		let comps = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: NSDate())
+		let comps = NSCalendar.currentCalendar().components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitSecond, fromDate: NSDate())
 		let red = pad(comps.hour)
 		let green = pad(comps.minute)
 		let blue = pad(comps.second)
@@ -37,7 +42,7 @@ public class View: ScreenSaverView {
 		let string = "#\(red)\(green)\(blue)" as NSString
 		let attributes = [
 			NSForegroundColorAttributeName: NSColor.whiteColor(),
-			NSFontAttributeName: font
+			NSFontAttributeName: font!
 		]
 
 		// Calculate where the text will be drawn
@@ -83,7 +88,7 @@ public class View: ScreenSaverView {
 	/// Setup
 	private func initialize() {
 		// Set to 15fps
-		animationTimeInterval = 1.0 / 4.0
+        setAnimationTimeInterval(1.0 / 4.0)
 		updateFont()
 	}
 
@@ -109,13 +114,7 @@ public class View: ScreenSaverView {
 
 	/// Get a monospaced font
 	private func fontWithSize(fontSize: CGFloat) -> NSFont {
-		let font: NSFont
-		if #available(OSX 10.11, *) {
-			font = NSFont.systemFontOfSize(fontSize, weight: NSFontWeightThin)
-		} else {
-			font = NSFont(name: "HelveticaNeue-Thin", size: fontSize)!
-		}
-
+		let font = NSFont(name: "HelveticaNeue-Thin", size: fontSize)!
 		let fontDescriptor = font.fontDescriptor.fontDescriptorByAddingAttributes([
 			NSFontFeatureSettingsAttribute: [
 				[
